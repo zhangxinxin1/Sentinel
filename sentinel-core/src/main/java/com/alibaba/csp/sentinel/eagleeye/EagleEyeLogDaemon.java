@@ -74,15 +74,17 @@ class EagleEyeLogDaemon implements Runnable {
         for (EagleEyeAppender watchedAppender : watchedAppenders) {
             try {
                 watchedAppender.reload();
+                EagleEye.selfAppender.reload();
             } catch (Exception e) {
                 EagleEye.selfLog("[ERROR] fail to reload: " + watchedAppender, e);
+                
             }
         }
-        try {
+      /*  try {
             EagleEye.selfAppender.reload();
         } catch (Exception e) {
             // quietly
-        }
+        }*/
     }
 
     static void start() {
